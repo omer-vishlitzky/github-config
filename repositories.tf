@@ -62,28 +62,6 @@ module "repo_public_template" {
   is_template         = true
 }
 
-module "repo_fulfillment_api" {
-  archived    = true
-  source      = "./modules/common_repository"
-  visibility  = "public"
-  name        = "fulfillment-api"
-  description = "Cloud-in-a-box fulfillment API"
-  teams = [
-    {
-      team_id    = "fulfillment-wg"
-      permission = "admin"
-    }
-  ]
-
-  pages = {
-    build_type = "workflow"
-    source = {
-      branch = "main"
-      path   = "/"
-    }
-  }
-}
-
 module "repo_managed_cluster_config" {
   source              = "./modules/common_repository"
   visibility          = "public"
@@ -150,20 +128,6 @@ module "repo_cloudkit_aap" {
   ]
 }
 
-module "repo_fulfillment_cli" {
-  archived    = true
-  source      = "./modules/common_repository"
-  visibility  = "public"
-  name        = "fulfillment-cli"
-  description = "Cloud-in-a-box fulfillment CLI"
-  teams = [
-    {
-      team_id    = "fulfillment-wg"
-      permission = "admin"
-    }
-  ]
-}
-
 module "repo_cloudkit_aap_ee" {
   source      = "./modules/common_repository"
   visibility  = "public"
@@ -210,20 +174,6 @@ module "repo_enhancement_proposals" {
   description            = "A repository for proposing enhancements to the osac project"
   all_members_permission = "push"
   required_approvals     = 2
-}
-
-module "repo_fulfillment_common" {
-  archived    = true
-  source      = "./modules/common_repository"
-  visibility  = "public"
-  name        = "fulfillment-common"
-  description = "Common code shared between the fulfillment service, cli, etc."
-  teams = [
-    {
-      team_id    = "fulfillment-wg"
-      permission = "admin"
-    }
-  ]
 }
 
 module "repo_osac_test_infra" {
